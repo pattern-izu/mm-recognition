@@ -1,0 +1,5 @@
+# LaTex files#
+##############
+*.log
+*.aux
+*.toc

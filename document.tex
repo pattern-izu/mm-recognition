@@ -1,0 +1,93 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[turkish]{babel}
+
+
+\title{Derin Öğrenme İle Multimedia Arama Motoru   (MMS Engine via Deep Learning)}
+\author{İbrahim GÜMÜŞ}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section{Giriş}
+\paragraph{}
+Web, metinlerin yanı sıra resimler, videolar ve sesler ile doludur. Arama motorları, kullanıcıların Web'deki metinlerden daha hızlı büyüyen multimedya içerikleri bulmalarına izin verecek şekilde kapsamlarını genişletmektedir.
+
+\paragraph{}
+Geleneksel metin tabanlı arama motorları, HTML sayfalarının herbirini belge olarak ele almakta ve kullanıcıların bunları bulmalarına izin vermek için sayfadaki metni indekslemektedir. Ancak multimedia belgelerinin aranabilir hale getirilmesi daha farklı ön işlemleri barındırmaktadır. Google, uzun zamandan beri web'teki resimler üzerinde resim arama işlevini sunmaktadır. Ancak, fotoğraflar arasında arama yapmak zorlu bir iş olarak temsil edilmektedir. Resim aramasında, resimleri sıralamak için kullanılabilecek pek çok bilgi vardır, örneğin web'deki metin veya resimin dosya adı. Bununla birlikte, resimlerde piksellerin ötesinde genellikle hiç bilgi bulunmamakta veya çok az bilgi bulunmaktadır. Bu, bir bilgisayarın bir fotoğrafdaki içeriği tanımlamasını ve kategorize etmesini zorlaştırmaktadır. Bir bilgisayar, katı nesneleri ve el yazısıyla yazılan rakamları tanımak gibi bazı görevleri başarılı bir şekilde yerine getirebilmektedir. Ancak diğer sınıflardaki nesneler için bu zor bir görevdir. Çünkü ortalama bir çocuk bir fotoğrafın içeriğini anlamada, dünyadaki en güçlü bilgisayarların en gelişmiş algoritmalarından daha iyidir.
+
+\paragraph{}
+Multimedya işlemesi genellikle görüntü, ses, metin ve kullanıcı tarafından oluşturulan alana özgü bilgilerle üretilen veriler gibi karmaşık multimedya içeriğini yakalamada çok kısıtlayıcı olan elle hazırlanmış özelliklerin üzerine kurulmuştur. Derin öğrenme konusundaki son gelişmeler, medya-içi etkileşimleri modellemek için otomatik olarak öğrenilen temsillerle birlikte daha sağlam bir temel üzerine multimedya bilgisini yerleştiren bir alan olarak yerini almıştır. Bu, derin ağ mimarisi, öğrenme ve çıkarım algoritmaları sayesinde bilgisayar ve multimedya uygulamaları için araştırmacılara yeni çalışma alanları açmaktadır. Mevcut çalışmalar, multimedya içerik analizinden, çok modlu (multimodal) veriler arasındaki etkileşimin modellenmesi ve multimedya içerik önerme sistemlerine kadar, bir dizi multimedya araştırma alanındaki en gelişmiş performansı geliştirmiş umut verici sonuçları ortaya koymuştur.
+
+\section{Önceki Çalışmalar}
+\paragraph{}
+Multimedia arama/analiz işlemleri ile ilgili yapılan çalışmalar;
+\begin{itemize}
+\item Xueyi Zhao ve arkadaşları [1], multimedia belgelerinin derecelendirilme işlemlerinin derin öğrenme yardımı ile yapılmasını konu almaktadır.
+\item Resimlerin içeriklerindeki nesnelerin tanımlanması ve bu resimlerin sınıflandırılması konularında yapılan çalışmalar [2,3,4], multimedia arama motoru geliştirme veya var olanı iyileştirmede büyük başarı sağlamaktadır.
+\item Videoların içeriklerini tanımlayarak bu içerikleri metin hale dönüştürmek karmaşık bir karşılaştırmayı daha basite indirgemek anlamına gelmektedir. Bu konuda yapılan çalışmalar [5], çalışma kapsamında geliştirilecek multimedia arama motorunun videolar ile yapılacak işlemler hususunda esin kaynağı olarak kullanılacaktır.
+\end{itemize}
+
+
+\section{Kapsam}
+\paragraph{}
+Arama motoru geliştirmek, metin veya multimedia tabanlı olsun birden fazla disiplini içerisinde barındırdığından dolayı kapsamlı ve gerçekleştirilmesi zor bir görevdir. Bundan dolayı bu çalışma, örüntü tanıma tekniklerini uygulayabilecek ölçekte sınırlı yeteneğe sahip bir multimedia arama motoru tasarımı ve geliştirmesini amaçlamaktadır. 
+
+\section{Önerilen Sistem}
+\paragraph{}
+Bu çalışmada, multimedia belgelerinin içeriklerini analizini, analiz sonucunda elde edilen verilerin hızlı erişimini (indekslenmesi) ve kullanıcının bu analizleri sorgulayabilmelerini olanak bir sistem sunulmaktadır. Bu amaç doğrultusunda projenin tasarım adımları ve bileşenleri aşağıda bahsedildiği gibi olup, dökümanda tasarlanan proje MMSE adı ile bahsedilecektir.
+
+\subsection{Sistem Analizi}
+MMSE sistemine ait alt sistemler ve tanımları şu şekildedir;
+\begin{itemize}
+\item \textbf{MMSCrawler:} Multimedia belgelerini ve bu belgelerin taşıdığı bilgileri toplayan bileşendir.
+\item \textbf{MMSLearner:} MMSCrawler tarafından elde edilen belgelerin üzerinde analiz yapabilen ve derin öğrenme becerisine sahip alt sistemdir.
+\item \textbf{MMSAdvisor:} MMSLearner tarafından öğrenilen bilgilerin kullanıcıya sunumu ile ilgililenen question answering yeteneğine sahip alt sistemdir.
+\end{itemize}
+
+\subsection{Bileşen Analizi}
+MMSE sisteminin, \textbf{Sistem Analizi} bölümünde bahsedilen alt sistemlerine ait bileşenler aşağıda belirtilmiştir.
+
+\begin{itemize}
+\item \textbf{MMSCrawler:} Başlangıç aşamasında herhangi bir alt bileşeni bulunmamaktadır.
+\item \textbf{MMSLearner:}
+\begin{itemize}
+\item \textbf{IBrain (Image Brain):} MMSCrawler tarafından elde edilen resimlerin üzerinde analiz eden derin öğrenme becerine sahip bileşendir.
+\item \textbf{VBrain (Video Brain):} MMSCrawler tarafından elde edilen videoların üzerinde analiz eden derin öğrenme becerine sahip bileşendir.
+\item \textbf{SBrain (Speech Brain):} MMSCrawler tarafından elde edilen ses dosyalarının üzerinde analiz eden derin öğrenme becerine sahip bileşendir.
+\end{itemize}
+\item \textbf{MMSAdvisor:}
+\begin{itemize}
+\item \textbf{MMSQueryProcessor:} Kullanıcı tarafından girilen sorgu metninin doğal dil işleme ve parçalanmasından sorumlu bileşendir.
+\item \textbf{MMSQueryAnalyzer:} MMSQueryProcessor tarafından parçalanan sorgu metnini analiz eden bileşendir. Daha önce bu sorguya sahip bir cevap verip vermediği, dönülen sonuçlardan elde edilen click data'lar ile sorgu kelimelerinin eşleştirilmesi gibi işlevlerden sorumludur.
+\item \textbf{MMSQueryRetriever:} MMSQueryProcessor tarafından parçalanan anahtar kelimelere uygun kaynakların bulunup kullanıcıya sunulması ile ilgili bileşendir.
+\end{itemize}
+  
+\end{itemize}
+
+\newpage
+\section{Veri Setleri}
+\paragraph{}
+MMSE sistemi öğrenme ve başlangıç aşaması için kullanılacak olan veri setleri;
+\begin{itemize}
+\item Video için; YouTube corpus (MSVD), M-VAD, MPII Movie Descriptions. 
+\item Resim için; Flickr8K, Flickr30K, MSCOCO
+\end{itemize}
+
+\newpage
+
+\begin{thebibliography}{1}
+   
+\bibitem{paper1} Xueyi Zhao, Xi Li, and Zhongfei Zhang {\em Multimedia Retrieval via Deep Learning to Rank, IEEE SIGNAL PROCESSING LETTERS VOL. 22}  1991.
+\bibitem{paper2} Andrej Karpathy and Li Fei-Fei {\em Deep Visual-Semantic Alignments for Generating Image Descriptions}  2015.
+\bibitem{paper3} Junhua Mao, Wei Xu, Yi Yang, Jiang Wang and Alan L. Yuille {\em Explain Images with Multimodal Recurrent Neural Networks}  2014.
+\bibitem{paper4} Ryan Kiros, Ruslan Salakhutdinov and Richard S. Zemel {\em Unifying Visual-Semantic Embeddings with Multimodal Neural Language Models}  2014.
+\bibitem{paper5} Subhashini Venugopalan, Marcus Rohrbach, Jeff Donahue, Raymond Mooney, Trevor Darrell and Kate Saenko {\em Sequence to Sequence – Video to Text} 2015.
+
+\end{thebibliography}
+
+
+\end{document}
